@@ -11,13 +11,7 @@ pipeline{
 				sh 'systemctl status jenkins'
 			}
 		}
-		stage('parallel'){
-        parallel{
-        stage('3-deploy'){
-                steps{
-                    sh 'whoami'
-                }
-            }
+		
             
 		stage('4-unitest'){
 			steps{
@@ -31,6 +25,4 @@ pipeline{
         }
     }
 
-}
-}
 }
