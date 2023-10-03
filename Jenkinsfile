@@ -11,9 +11,9 @@ pipeline{
 				sh 'systemctl status jenkins'
 			}
 		}
-		stage('3-unitest'){
+		stage('parallel'){
         parallel{
-            stage('unitest'){
+            stage('3-unitest'){
                 steps{
                     sh 'whoami'
                 }
