@@ -1,28 +1,38 @@
+
 pipeline{
 	agent any
 	stages{
-		stage('1-clonecode'){
+		stage('Build'){
 			steps{
-				sh 'ped'
+				echo "Building the project"
 			}
 		}
-		stage('2-artifactbuild'){
+		stage('test'){
 			steps{
-				sh 'systemctl status jenkins'
+				sh 'systemctl start jenkins'
 			}
 		}
-		
-            
-		stage('4-unitest'){
-			steps{
-				echo "we are in stage 3"
+		stage('parallel'){
+			parallel{
+				stage('parallel-1'){
+					steps{
+						sh 'lscpu'
+					}
+				}stage('Deploy'){
+					steps{
+						sh 'free -m'
+					}
+				}
+				stage('parallel-2'){
+					parallel{
+						stage('parallel-2-1'){
+							steps{
+								sh 'cat /etc/passwd'
+							}
+						}
+					}
+				}
 			}
 		}
 	}
-    stage('4-deploy'){
-        steps{
-            sh 'lsblk'
-        }
-    }
-
 }
