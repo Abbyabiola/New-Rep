@@ -13,7 +13,7 @@ pipeline{
 		}
 		stage('parallel'){
         parallel{
-            stage('3-deploy'){
+        stage('3-deploy'){
                 steps{
                     sh 'whoami'
                 }
