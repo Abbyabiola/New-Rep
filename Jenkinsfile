@@ -1,38 +1,46 @@
-
 pipeline{
 	agent any
 	stages{
 		stage('Build'){
 			steps{
-				echo "Building the project"
+				echo 'Building...'
 			}
 		}
-		stage('test'){
+		stage('Test'){
 			steps{
-				sh 'systemctl start jenkins'
+				echo 'Testing...'
 			}
 		}
-		stage('parallel'){
-			parallel{
-				stage('parallel-1'){
-					steps{
-						sh 'lscpu'
+		stage('Deploy'){
+			steps{
+				echo 'Deploying...'
+			}
+		}
+		stage('Release'){
+			steps{
+				parallel(
+					chrome: {
+						echo 'Testing Chrome...'
+					},
+					firefox: {
+						echo 'Testing Firefox...'
+					},
+					safari: {
+						echo 'Testing Safari...'
 					}
-				}stage('Deploy'){
-					steps{
-						sh 'free -m'
 					}
+					}
+				)
+			}
+			stage('Notify'){
+				steps{
+					echo 'Notifying...'
 				}
-				stage('parallel-2'){
-					parallel{
-						stage('parallel-2-1'){
-							steps{
-								sh 'cat /etc/passwd'
-							}
-						}
-					}
+			}
+			stage('Deploy'){
+				steps{
+					sh 'pwd'
 				}
 			}
 		}
-	}
-}
+	
