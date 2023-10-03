@@ -8,7 +8,17 @@ pipeline{
 		}
 		stage('Test'){
 			steps{
-				echo 'Testing...'
+				parallel(
+					unitTests: {
+						echo 'Running unit tests...'
+					},
+					integrationTests: {
+						echo 'Running integration tests...'
+					},
+					systemTests: {
+						echo 'Running system tests...'
+					}
+				)
 			}
 		}
 		stage('Deploy'){
