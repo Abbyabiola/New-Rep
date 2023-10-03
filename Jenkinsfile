@@ -28,9 +28,9 @@ pipeline{
 					safari: {
 						echo 'Testing Safari...'
 					}
-					}
-					}
 				)
+					}
+				
 			}
 			stage('Notify'){
 				steps{
@@ -43,4 +43,5 @@ pipeline{
 				}
 			}
 		}
+}
 	
