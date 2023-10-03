@@ -11,6 +11,7 @@ pipeline{
 				sh 'systemctl status jenkins'
 			}
 		}
+		stage('3-unitest'){
         parallel{
             stage('unitest'){
                 steps{
@@ -30,5 +31,6 @@ pipeline{
         }
     }
 
+}
 }
 }
