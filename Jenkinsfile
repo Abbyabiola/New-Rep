@@ -13,19 +13,19 @@ pipeline{
 		}
 		stage('parallel'){
         parallel{
-            stage('3-unitest'){
+            stage('3-deploy'){
                 steps{
                     sh 'whoami'
                 }
             }
             
-		stage('3-unitest'){
+		stage('4-build'){
 			steps{
 				echo "we are in stage 3"
 			}
 		}
 	}
-    stage('4-deploy'){
+    stage('5-deploy'){
         steps{
             sh 'lsblk'
         }
