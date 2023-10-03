@@ -11,21 +11,21 @@ pipeline{
 				sh 'systemctl status jenkins'
 			}
 		}
-		stage('3-unitest'){
+		stage('parallel'){
         parallel{
-            stage('unitest'){
+            stage('3-test'){
                 steps{
                     sh 'whoami'
                 }
             }
             
-		stage('3-unitest'){
+		stage('4-deploy'){
 			steps{
 				echo "we are in stage 3"
 			}
 		}
 	}
-    stage('4-deploy'){
+    stage('4-securitycheck'){
         steps{
             sh 'lsblk'
         }
