@@ -37,7 +37,7 @@ pipeline{
 					echo 'Notifying...'
 				}
 			}
-			stage('Deploy'){
+			stage('Securitycheck'){
 				steps{
 					sh 'pwd'
 				}
